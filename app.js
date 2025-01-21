@@ -10,7 +10,7 @@ require('dotenv').config();
 
 // Connect to MongoDB
 mongoose
-  .connect('mongodb://127.0.0.1:27017/shopDB', {
+  .connect(process.env.DBHOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
