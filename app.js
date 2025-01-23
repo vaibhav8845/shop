@@ -2,13 +2,15 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors'); // Import CORS package
 const orderRoutes = require('./routes/orderRoutes');
-const PORT = process.env.PORT || 5000;
+require('dotenv').config(); // Load environment variables
+
 const app = express();
+
+// Middleware
 app.use(cors()); // Enable CORS
 app.use(express.json()); // Middleware to parse JSON bodies
-require('dotenv').config();
 
-// Connect to MongoDB
+// Connect to MongoDB using the environment variable for DB connection
 mongoose
   .connect(process.env.DBHOST, {
     useNewUrlParser: true,
@@ -20,8 +22,8 @@ mongoose
 // Use Routes
 app.use('/api', orderRoutes);
 
-// const PORT = 5000;
-// app.listen(5000, () => console.log(`Server running on port ${PORT}`));
-app.listen(5000, () => {
-  console.log('Server is listenin on PORT :' + PORT);
-})
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});

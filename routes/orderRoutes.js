@@ -15,8 +15,7 @@ router.post('/order', async (req, res) => {
 
     // Create and save a new order
     const newOrder = new Order({
-      
-        customerName: customerName || 'Anonymous', // Optional field
+      customerName: customerName || 'Anonymous', // Optional field
       phoneNumber,
       momosType,
       rate,
@@ -32,15 +31,15 @@ router.post('/order', async (req, res) => {
   }
 });
 
+// GET request to fetch all orders
 router.get('/show', async (req, res) => {
-    try {
-      const orders = await Order.find();
-      res.status(200).json(orders);
-    } catch (err) {
-      console.error('Error fetching orders:', err);
-      res.status(500).json({ error: 'Failed to fetch orders. Please try again later.' });
-    }
-  });
-
+  try {
+    const orders = await Order.find();
+    res.status(200).json(orders);
+  } catch (err) {
+    console.error('Error fetching orders:', err);
+    res.status(500).json({ error: 'Failed to fetch orders. Please try again later.' });
+  }
+});
 
 module.exports = router; // Export the router for use in the main server
