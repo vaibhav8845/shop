@@ -4,7 +4,7 @@ const Order = require('../models/Order'); // Import the Order model
 const router = express.Router();
 
 // POST request to submit an order
-router.post('/orders', async (req, res) => {
+router.post('/order', async (req, res) => {
   const { customerName, phoneNumber, momosType, rate, dish, quantity } = req.body;
 
   try {
