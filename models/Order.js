@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
   customerName: { type: String },
-  phoneNumber: { type: String, required: false },
+  phoneNumber: { type: String},
   momosType: { type: String, required: true },
   rate: { type: String, required: true },
   dish: { type: String, required: true },
